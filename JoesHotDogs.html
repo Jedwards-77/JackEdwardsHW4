@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe's Hotdogs</title>
+<style>
+
+h1{
+   color: #FFCE1B;
+   text-align: center; 
+   font-size: 75px;
+   background-color: black;
+   font-family: 'Lobster', cursive;
+}
+h2{
+   color: #FFCE1B;
+   text-align: center; 
+   font-size: 35px;
+   background-color: black;
+   font-family: 'Lobster', cursive;
+}
+body{
+    color: #BB2B12;
+    text-align: left;
+    font-size: 27px;
+}
+.headerText
+{
+color: black;
+text-align: center; 
+font-size: 30px;
+}
+table{
+color: #BB2B12;
+text-align: left;
+font-size: 27px;
+border-collapse: collapse;
+width: 100%;
+}
+
+</style>
+<script>
+    const hotdogsPrice = 4.80;
+    const frenchfriesPrice = 3.95;
+    const drinksPrice = 1.99;
+    const discountRate = 0.10;
+    const taxRate = 0.0625;
+function showMoney(preRound)
+    {
+        preRound = Math.round(preRound*100);
+        preRound = preRound + "";
+        let half1 = preRound.substring(0,preRound.length-2);
+        let half2 = preRound.substring(preRound.length-2, preRound.length);
+        if(preRound.length < 5)
+        {
+            preRound = preRound  + "0";
+        }
+        if(preRound == 0)
+        return "0.00";
+        return (half1 + "." + half2)
+    }
+
+var numDogs = prompt("How many hotdogs do you want?");
+var numFries = prompt("How many fries do you want?");
+var numDrinks = prompt("How many sodas do you want");
+
+var dogTotal = (numDogs * hotdogsPrice);
+var friesTotal = (numFries * frenchfriesPrice);
+var drinksTotal = (numDrinks * drinksPrice);
+
+var subtotal = (dogTotal) + (friesTotal) + (drinksTotal);
+var subtotaldisc = subtotal;
+console.log(showMoney(subtotal));
+if (subtotal >= 25)
+    {
+    subtotaldisc = subtotal * (1-discountRate);
+    }
+var taxAmount = subtotaldisc * taxRate;
+var total = (subtotaldisc) + (taxAmount);
+</script>
+</head>
+<body style = "background-color:#d8c4aa">
+    <h1>Joe's Hotdogs</h1>
+    <div class = "headerText">
+    Order Boston's Best Hotdogs Online!
+    <br>
+    10% discount on orders $25 and over! 
+    </div>
+    <h2>Your Order Summary:</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>Hotdogs</td>
+            <td>$4.80</td>
+            <td><script>document.write(numDogs)</script></td>
+            <td>$<script>document.write(showMoney(dogTotal))</script></td>
+        </tr>
+        <tr>
+            <td>Fries</td>
+            <td>$3.95</td>
+            <td><script>document.write(numFries)</script></td>
+            <td>$<script>document.write(showMoney(friesTotal))</script></td>
+        </tr>
+        <tr>
+            <td>Drinks</td>
+            <td>$1.99</td>
+            <td><script>document.write(numDrinks)</script></td>
+            <td>$<script>document.write(showMoney(drinksTotal))</script></td>
+        </tr>
+        <tr>
+            <th>Your Subtotal:</th>
+            <th></th>
+            <th></th>
+            <th>$<script>document.write(showMoney(subtotal))</script></th>
+        </tr>
+        <tr>
+            <th>Your Subtotal After Discount:</th>
+            <th></th>
+            <th></th>
+            <th>$<script>document.write(showMoney(subtotaldisc))</script></th>
+        </tr>
+        <tr>
+            <th>Tax Amount:</th>
+            <th></th>
+            <th></th>
+            <th>$<script>document.write(showMoney(taxAmount))</script></th>
+        </tr>
+        <tr>
+            <th>Total Due:</th>
+            <th></th>
+            <th></th>
+            <th>$<script>document.write(showMoney(total))</script></th>
+        </tr>
+        </table>
+</body>
+</html>
